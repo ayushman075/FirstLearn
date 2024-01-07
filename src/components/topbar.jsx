@@ -12,6 +12,7 @@ import { MdOutlineClass } from "react-icons/md";
 import { FaWpforms } from "react-icons/fa6";
 import { GoDiscussionClosed } from "react-icons/go";
 import { RxDashboard } from "react-icons/rx";
+import { Link } from 'react-router-dom';
 
 
 
@@ -29,14 +30,16 @@ export const Topbar=()=> {
             setIsOpen((prevState) => !prevState)
         }
 
+        
+
 return(
 <>
 <nav >
   
-    <div className="flex bg-yellow-300  justify-between py-5">
+    <div className="flex bg-yellow-300 static justify-between py-5">
         {/* Logo Div */}
         <div className='flex'>
-            <button className='sm:px-5 px-1' onClick={toggleDrawer}><RxHamburgerMenu size={30}/></button>
+            <button className='sm:px-8 px-3' onClick={toggleDrawer}><RxHamburgerMenu size={30}/></button>
             <a href='/'><img src={logo} width="50px"  alt='logo'></img></a>
         </div>
         {/* Greeting Div */}
@@ -46,8 +49,8 @@ return(
         {/* Menu Div */}
         <div className='flex flex-row'>
 <ul className='flex flex-row'>
-    <li className='sm:px-5 px-1' > <button><IoMdNotificationsOutline size={30} /></button></li>
-    <li className='sm:px-5 px-1'><button><VscAccount size={30}/></button></li>
+    <li className='sm:px-8 px-3' > <button><IoMdNotificationsOutline size={30} /></button></li>
+    <li className='sm:px-8 px-3'><button><VscAccount size={30}/></button></li>
 </ul>
         </div>
     </div>
@@ -63,15 +66,15 @@ return(
     
     <h1 className='px-10 font-bold text-xl py-0.5'>First Learn</h1>
     </div>
-    <div className='py-8 pt-14 flex flex-row ' onClick={toggleDrawer}>
+    <Link to="/" className='py-8 pt-14 flex flex-row ' onClick={toggleDrawer}>
     
     <RxDashboard size={30}/>
     <h1 className='px-10 font-bold text-xl py-0.5 hover:cursor-pointer'>Dashboard</h1>
-    </div>
-    <div className='py-8  flex flex-row' onClick={toggleDrawer}>
+    </Link>
+    <Link to="/batch" className='py-8  flex flex-row' onClick={toggleDrawer}>
     <SiGoogleclassroom size={30}/>
     <h1 className='px-10 font-bold text-xl py-0.5 hover:cursor-pointer'>Batches</h1>
-    </div>
+    </Link>
     <div className='py-8  flex flex-row' onClick={toggleDrawer}>
     <MdOutlineClass size={30} />
     <h1 className='px-10 font-bold text-xl py-0.5 hover:cursor-pointer'>Assignments</h1>
