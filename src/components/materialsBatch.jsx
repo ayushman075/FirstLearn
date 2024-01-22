@@ -1,9 +1,12 @@
 import React, {useState,useEffect} from 'react'
-
+import {Collapse} from 'react-collapse';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {BatchMaterial} from './batchMaterial';
 import BatchAnnouncement from './batchAnnouncement';
+
+import AssignmentUploader from './assignmentUploader';
+import { IoMdClose } from "react-icons/io";
 
 
 const MaterialsBatch = () => {
@@ -11,6 +14,11 @@ const [isAnnouncementSubmitActive,setisAnnouncementSubmitActive]=useState(false)
 const [announcement,setAnnouncement]=useState("");
 const [announcements,setAnnouncements]=useState([]);
 const [materials,setMaterials]=useState([]);
+const [isMaterialAddVisible,setIsMaterialAddVisible]=useState(false);
+
+
+
+
 const announcementChangeHandler=(e)=>{
 setAnnouncement(e.target.value);
 
@@ -24,7 +32,7 @@ setisAnnouncementSubmitActive(false);
 
 const submitAnnouncement=(e)=>{
   e.preventDefault();
-  const date =new Date();
+ 
   setAnnouncements((prev)=>[...prev,{
     Announcement:announcement,
     announcedAt:"7/1/2024 10:00"
@@ -193,7 +201,9 @@ useEffect(()=>{
 
 },[])
 
-
+const handleAddMaterialClick=()=>{
+  setIsMaterialAddVisible((prev)=>!prev);
+}
 
 
 
@@ -212,9 +222,14 @@ useEffect(()=>{
             </div>
             </form>
             <div className=' m-auto flex w-1/4'>
-              <button className='m-auto p-3 rounded-xl hover:text-black text-l hover:bg-orange-400'>Add Material</button>
+           
+           <button className='m-auto p-3 rounded-xl hover:text-black text-l hover:bg-orange-400' onClick={handleAddMaterialClick}>{isMaterialAddVisible?<IoMdClose />:"Add Material"}</button>
+           
             </div>
         </div>
+        <Collapse isOpened={isMaterialAddVisible}>
+<AssignmentUploader type="Material"/>
+</Collapse>
         <div>
         
           {

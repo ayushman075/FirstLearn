@@ -3,6 +3,8 @@ import './App.css';
 import {BrowserRouter as Router,Routes,Route, BrowserRouter} from 'react-router-dom'
 import {Dashboard} from './pages/dashboard';
 import Batch from './pages/batch.jsx'
+import BatchAssignment from './components/batchAssignment.jsx';
+import AttendanceBatches from './components/attendanceBatches.jsx';
 
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Dashboard/>}></Route>
         <Route path='/batch' element={<Batch batchname="3rd Sem EE 2026"/>}/>
+        
+
       </Routes>
      </BrowserRouter>
     </>
